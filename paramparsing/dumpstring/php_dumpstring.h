@@ -17,7 +17,6 @@ extern "C" {
 PHP_FUNCTION(dumpstring);
 PHP_FUNCTION(dumpinput);
 PHP_FUNCTION(dumparrayval);
-PHP_FUNCTION(findhashtest);
 
 extern zend_module_entry dumpstring_module_entry;
 #define phpext_dumpstring_ptr &dumpstring_module_entry

@@ -33,19 +33,5 @@
       print "dumparrayval $key => $val\n";
     }
   }
-
-  print "Array fetch test 2\n\n";
-  foreach ($myTable as $key => $val )
-  {
-    $outstring = findhashtest($key, $myTable);
-    if (empty($outstring))
-    {
-      print "findhashtest fails to fetch from key: $key\n";
-    }
-    else
-    {
-      print "findhashtest $key => $val\n";
-    }
-  }
   
 ?>
