@@ -1,5 +1,4 @@
-# http://www.gnu.org/software/automake
-
+# http://www.gnu.org/software/automake 
 Makefile.in
 /ar-lib
 /mdate-sh
@@ -145,4 +144,7 @@ run-tests.php
 # Repo particulars
 
 tmp/
+
+# Misc
+*~
 

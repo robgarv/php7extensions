@@ -9,7 +9,11 @@ Of course, I'm writing these things because a) I need to learn this stuff and b)
 
 Contains some simple "helloworld" extensions
 
-2. Dumpstrings
+2. paramparsing
 
-Demonstrates parameter passing and basic array access using "old style" parameter parsing
+Demonstrates parameter passing in both legacy and new PHP 7 styles
+
+3. arrayhandling
+
+Demonstrates basic array handling operations. 
 
