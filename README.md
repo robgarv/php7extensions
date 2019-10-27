@@ -17,3 +17,8 @@ Demonstrates parameter passing in both legacy and new PHP 7 styles
 
 Demonstrates basic array handling operations. 
 
+4. memory
+
+For exploring memory management issues
+
+

@@ -1,4 +1,12 @@
-# dumparray
+# arraystress
+
+A variant of dumparray used to test simple memory management. Running
+this test basically shows that the simple extension functions implemented
+in the arraystress extension don't leak memory. 
+
+The array dump output is written to /tmp/arraystress.log
+
+The test script prints memory utilization stats to the console. 
 
 Examples of basic parameter parsing and array (hash) access. This is written
 in C++ just to provide an example. (See config.m4 for necessary details.)
@@ -10,7 +18,7 @@ execution of the extension to facilitate attaching a debugger.
 ## To build
 
 
-cd dumparray
+cd arraystress
 
 phpize
 
@@ -26,7 +34,7 @@ make
 
 ## To run the example
 
-./rundumparray
+./runarraystress
 
 ## Debugging
 
@@ -34,11 +42,11 @@ See the GDB_BLOCK macro in dumparray.cpp. If it finds a file at $HOME/tmp/gdb.bl
 
 cd <this directory>
 touch $HOME/tmp/gdb.block
-./rundumparray.sh
+./runarraystress.sh
 
 From a second terminal window:
 
-ps -afe | grep testDumpArray
+ps -afe | grep testArrayStress
 gdb -p <pid obtained by ps command>
 
 Set break points. From third terminal window, 
