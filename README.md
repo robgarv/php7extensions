@@ -7,7 +7,8 @@ Of course, I'm writing these things because a) I need to learn this stuff and b)
 
 1. helloworld 
 
-Contains some simple "helloworld" extensions
+Contains some simple "helloworld" extensions. helloworld1 has been augmented
+to illustrate the use of valgrind to explore memory leaks. 
 
 2. paramparsing
 
@@ -21,4 +22,13 @@ Demonstrates basic array handling operations.
 
 For exploring memory management issues
 
+Additionally, the following directories were added:
+
+1. bin
+
+Contains useful scripts like RunValgrind.sh
+
+2. etc
+
+Contains a php.ini file and a valgrind suppression file. 
 

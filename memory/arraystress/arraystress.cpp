@@ -16,8 +16,17 @@ using namespace std;
   std::ostringstream _ssfilename; \
   _ssfilename << getenv( "HOME" ) << "/tmp/gdb.block"; \
   struct stat _gdbstat; \
+  int updatepid = 1; \
   while ( stat( _ssfilename.str().c_str(), &_gdbstat ) == 0 ) \
   { \
+    if ( updatepid ) \
+    { \
+      std::ofstream blockfile; \
+      blockfile.open(_ssfilename.str().c_str() ); \
+      blockfile << getpid() << "\n"; \
+      blockfile.close(); \
+      updatepid = 0; \
+    } \
     sleep( 1 ); \
   } \
 }
