@@ -22,6 +22,10 @@ Demonstrates basic array handling operations.
 
 For exploring memory management issues
 
+5. zvals
+
+Examples demonstrating reading and writing zvals. 
+
 Additionally, the following directories were added:
 
 1. bin
