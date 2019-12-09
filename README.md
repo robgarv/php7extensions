@@ -26,6 +26,11 @@ For exploring memory management issues
 
 Examples demonstrating reading and writing zvals. 
 
+6. classes
+
+Examples demonstrating techniques for implementing classes that can
+be instantiated by PHP scripts. 
+
 Additionally, the following directories were added:
 
 1. bin
@@ -35,4 +40,22 @@ Contains useful scripts like RunValgrind.sh
 2. etc
 
 Contains a php.ini file and a valgrind suppression file. 
+
+# Notes on build environment
+
+These examples were built on ubuntu16.04 with php 7.3 installed
+by building from source code. Here's some pretty good guides for 
+accomplishing that chore.
+
+* https://docs.moodle.org/38/en/Compiling_PHP_from_source
+* https://github.com/gitKearney/php7-from-scratch
+
+Based on which gnu C/C++ compiler you have running, you
+might need to fiddle with the config.m4 files. For example,
+to get C++ 11 support in the classes project I had to add
+
+CXXFLAGS="-std=gnu++11 $CXXFLAGS"
+
+(That was necessary to use the hash functional.)
+
 
