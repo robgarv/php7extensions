@@ -1,4 +1,4 @@
-#Debugging on Ubuntu 16.04
+# Debugging on Ubuntu 16.04
 
 This document describes how I set up Ubuntu 16.04 for PHP extension debugging. There are really two cases: 
 
@@ -80,15 +80,19 @@ to your satisfaction.
 
 As root, add the following line to /etc/apt/sources.list.d/ondrej-ubuntu-php-xenial.list
 
-> deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main/debug
-
+```
+deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main/debug
+```
 So the file now looks like
 
-> deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
-> deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main/debug
-> \# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+```
+deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main/debug
+\# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+```
 
 Then install the debug symbols package. 
+
 ```Shell
 sudo apt-get update
 sudo apt-get upgrade
