@@ -28,24 +28,31 @@ Decide where you want your core files to wind up. I put mine in a directory call
 
 As root (via sudo or whatever) create the crash directory
 
-> mkdir -p /var/crash
+```bash
+mkdir -p /var/crash
+```
 
 Insure that your user has read/write access to this directory.
 
 As root (via sudo or whatever) create the file 
 
+```
 /etc/syscrtl.d/60-core-pattern.conf
+```
 
 Edit it so that it contains the line
 
-> kernel.core_pattern = /var/crash/core.%e.%p.%t
+```
+kernel.core_pattern = /var/crash/core.%e.%p.%t
+```
 
 Now at this point, you can reboot and see if your changes are now reflected in /proc/sys/kernel/core_pattern. 
 
 Note that you can achieve the same effect *temporarily* by issuing the command
 
-> sudo echo "/var/crash/core.%e.%p.%t" > /proc/sys/kernel/core_pattern
-
+```bash
+sudo echo "/var/crash/core.%e.%p.%t" > /proc/sys/kernel/core_pattern
+```
 On next reboot, that would be wiped out. 
 
 # PHP 7.x Installed from Packages
@@ -143,11 +150,14 @@ However you obtain it, copy that to your home directory.
 
 To examine a core file, 
 
-> gdb <path to application> <path to core file>
-
+```
+gdb <path to application> <path to core file>
+```
 For example, 
 
+```Shell
 gdb apache2 /var/crash/core.apache2.4187.1579553424
+```
 
 The zbacktrace command provided by the php .gdbinit file is incredibly convenient as it presents that stack in terms of you php code. The gdb where and bt commands work as normal. You will have symbolic references and be able to inspect code. 
 
