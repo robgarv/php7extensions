@@ -63,14 +63,17 @@ In my /etc/apt/sources.list.d directory I have the following apt lists:
 
 ondrej-ubuntu-apache2-xenial.list contains:
 
-> deb http://ppa.launchpad.net/ondrej/apache2/ubuntu xenial main
-> \# deb-src http://ppa.launchpad.net/ondrej/apache2/ubuntu xenial main
+```
+deb http://ppa.launchpad.net/ondrej/apache2/ubuntu xenial main
+# deb-src http://ppa.launchpad.net/ondrej/apache2/ubuntu xenial main
+```
 
 Initially, ondrej-ubuntu-php-xenial.list contained:
 
-> deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
-> \# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
-
+```
+deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+```
 
 Insure that Steps 1 and 2 of the common operations above have been performed 
 to your satisfaction. 
@@ -88,7 +91,7 @@ So the file now looks like
 ```
 deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
 deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main/debug
-\# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
 ```
 
 Then install the debug symbols package. 
@@ -113,17 +116,16 @@ The debugger (because of the symbols we installed in step 1) is expecting the ph
 
 This procedure makes that happen. 
 
-```Shell
+```bash
 sudo su -
 mkdir -p /build/php7.3-UwOnoh/
 cd /build/php7.3-UwOnoh/
-```
-
 tar -xvzf /home/myname/Downloads/php-7.3.13.tar.gz 
+```
 
 This will create a directory named php-7.3.13 in the /build/php7.3-UwOnoh/ directory. The debugger is expecting a somewhat different path ... so we will rename to conform the debug symbol and gdb expectations
 
-```Shell
+```bash
 mv php-7.3.13 php7.3-7.3.13
 ```
 
