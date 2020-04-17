@@ -1,4 +1,4 @@
-#Debugging on Ubuntu 16.04
+# Debugging on Ubuntu 16.04
 
 This document describes how I set up Ubuntu 16.04 for PHP extension debugging. There are really two cases: 
 
@@ -28,24 +28,31 @@ Decide where you want your core files to wind up. I put mine in a directory call
 
 As root (via sudo or whatever) create the crash directory
 
-> mkdir -p /var/crash
+```bash
+mkdir -p /var/crash
+```
 
 Insure that your user has read/write access to this directory.
 
 As root (via sudo or whatever) create the file 
 
+```
 /etc/syscrtl.d/60-core-pattern.conf
+```
 
 Edit it so that it contains the line
 
-> kernel.core_pattern = /var/crash/core.%e.%p.%t
+```
+kernel.core_pattern = /var/crash/core.%e.%p.%t
+```
 
 Now at this point, you can reboot and see if your changes are now reflected in /proc/sys/kernel/core_pattern. 
 
 Note that you can achieve the same effect *temporarily* by issuing the command
 
-> sudo echo "/var/crash/core.%e.%p.%t" > /proc/sys/kernel/core_pattern
-
+```bash
+sudo echo "/var/crash/core.%e.%p.%t" > /proc/sys/kernel/core_pattern
+```
 On next reboot, that would be wiped out. 
 
 # PHP 7.x Installed from Packages
@@ -63,14 +70,17 @@ In my /etc/apt/sources.list.d directory I have the following apt lists:
 
 ondrej-ubuntu-apache2-xenial.list contains:
 
-> deb http://ppa.launchpad.net/ondrej/apache2/ubuntu xenial main
-> \# deb-src http://ppa.launchpad.net/ondrej/apache2/ubuntu xenial main
+```
+deb http://ppa.launchpad.net/ondrej/apache2/ubuntu xenial main
+# deb-src http://ppa.launchpad.net/ondrej/apache2/ubuntu xenial main
+```
 
 Initially, ondrej-ubuntu-php-xenial.list contained:
 
-> deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
-> \# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
-
+```
+deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+```
 
 Insure that Steps 1 and 2 of the common operations above have been performed 
 to your satisfaction. 
@@ -80,15 +90,19 @@ to your satisfaction.
 
 As root, add the following line to /etc/apt/sources.list.d/ondrej-ubuntu-php-xenial.list
 
-> deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main/debug
-
+```
+deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main/debug
+```
 So the file now looks like
 
-> deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
-> deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main/debug
-> \# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+```
+deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main/debug
+# deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+```
 
 Then install the debug symbols package. 
+
 ```Shell
 sudo apt-get update
 sudo apt-get upgrade
@@ -109,17 +123,16 @@ The debugger (because of the symbols we installed in step 1) is expecting the ph
 
 This procedure makes that happen. 
 
-```Shell
+```bash
 sudo su -
 mkdir -p /build/php7.3-UwOnoh/
 cd /build/php7.3-UwOnoh/
-```
-
 tar -xvzf /home/myname/Downloads/php-7.3.13.tar.gz 
+```
 
 This will create a directory named php-7.3.13 in the /build/php7.3-UwOnoh/ directory. The debugger is expecting a somewhat different path ... so we will rename to conform the debug symbol and gdb expectations
 
-```Shell
+```bash
 mv php-7.3.13 php7.3-7.3.13
 ```
 
@@ -137,11 +150,14 @@ However you obtain it, copy that to your home directory.
 
 To examine a core file, 
 
-> gdb <path to application> <path to core file>
-
+```
+gdb <path to application> <path to core file>
+```
 For example, 
 
+```Shell
 gdb apache2 /var/crash/core.apache2.4187.1579553424
+```
 
 The zbacktrace command provided by the php .gdbinit file is incredibly convenient as it presents that stack in terms of you php code. The gdb where and bt commands work as normal. You will have symbolic references and be able to inspect code. 
 
