@@ -101,13 +101,16 @@ deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main/debug
 # deb-src http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
 ```
 
-Then install the debug symbols package. 
+Then install the debug symbols packages for apache and CLI. 
 
-```Shell
+```bash
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt install libapache2-mod-php7.3-dbgsym
+sudo apt install php7.3-common-dbgsym 
+sudo apt install php7.3-cli-dbgsym
 ```
+For general guidance on obtaining and setting up debug symbols packages, see the Ubuntu wiki article [DebuggingProgramCrash](https://wiki.ubuntu.com/DebuggingProgramCrash)
 
 ## Procedure Step 2: Install the PHP source code
 

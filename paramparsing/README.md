@@ -12,3 +12,6 @@ execution of the extension to facilitate attaching a debugger.
 This example uses "traditional"/legacy parameter parsing APIs to parse parameters
 and iterate an array. 
 
+(Moved to arrayhandling/dumparray)
+
+
